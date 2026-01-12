@@ -11,5 +11,3 @@ vim.lsp.enable("prismals")
 vim.lsp.enable("eslint")
 vim.lsp.enable("black")
 vim.lsp.enable("isort")
-
-
