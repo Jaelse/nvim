@@ -9,34 +9,40 @@ return {
           "github:Crashdummyy/mason-registry",
         },
       })
-    end
+    end,
   },
   {
     "mason-org/mason-lspconfig.nvim",
-    opts = { },
+    opts = {},
     dependencies = {
-      { "mason-org/mason.nvim", opts = { },
+      { "mason-org/mason.nvim", opts = {} },
+      "neovim/nvim-lspconfig",
     },
-    "neovim/nvim-lspconfig",
+    config = function()
+      require("mason-lspconfig").setup()
+    end,
   },
-  config = function()
-    require("mason-lspconfig").setup({
-      ensure_installed = {
-        "lua_ls",
-        "vimls",
-        "rust_analyzer",
-        "ts_ls",
-        "bashls",
-        "html",
-        "cssls",
-        "tailwindcss",
-        "svelte",
-        "prismals",
-        "pyright",
-        "eslint",
-        "bashls",
-      }
-    })
-  end
-}
+  {
+    "WhoIsSethDaniel/mason-tool-installer.nvim",
+    config = function()
+      require("mason-tool-installer").setup({
+        ensure_installed = {
+          "lua_ls",
+          "vimls",
+          "rust_analyzer",
+          "ts_ls",
+          "bashls",
+          "html",
+          "cssls",
+          "tailwindcss",
+          "svelte",
+          "prismals",
+          "pyright",
+          "eslint",
+          "bashls",
+          "gopls",
+        },
+      })
+    end,
+  },
 }
