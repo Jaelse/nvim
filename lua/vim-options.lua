@@ -6,3 +6,4 @@ vim.wo.number = true
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 vim.opt.winborder = "rounded"
+vim.o.mouse = a
