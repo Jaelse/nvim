@@ -29,7 +29,6 @@ return {
                 ensure_installed = {
                     "lua_ls",
                     "vimls",
-                    "rust_analyzer",
                     "ts_ls",
                     "bashls",
                     "html",
