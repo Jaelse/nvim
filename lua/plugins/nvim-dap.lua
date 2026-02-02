@@ -8,7 +8,7 @@ return {
         vim.keymap.set(
             "n",
             "<leader>qb",
-            "<cmd>lua require'dap'.togger_breakpoint()<CR>",
+            "<cmd>lua require'dap'.toggle_breakpoint()<CR>",
             { desc = "Debugger toggle breakpoint" }
         )
         vim.keymap.set(
