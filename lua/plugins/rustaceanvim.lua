@@ -2,11 +2,6 @@ return {
     "mrcjkb/rustaceanvim",
     version = "^7",
     lazy = false,
-    ["rust-analyzer"] = {
-        cargo = {
-            allFeatures = true,
-        },
-    },
     config = function()
         local bufnr = vim.api.nvim_get_current_buf()
         vim.keymap.set("n", "<leader>gra", function()
@@ -16,5 +11,17 @@ return {
         vim.keymap.set("n", "K", function()
             vim.cmd.RustLsp({ "hover", "actions" })
         end, { silent = true, buffer = bufnr })
+
+        vim.g.rustaceanvim = {
+            server = {
+                settings = {
+                    ["rust-analyzer"] = {
+                        cargo = {
+                            allFeatures = true,
+                        },
+                    },
+                },
+            },
+        }
     end,
 }
