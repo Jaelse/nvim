@@ -9,6 +9,10 @@ return {
                     "github:Crashdummyy/mason-registry",
                 },
             })
+            vim.diagnostic.config({
+                virtual_text = true,
+                underline = true
+            })
         end,
     },
     {
@@ -22,9 +26,9 @@ return {
             require("mason-lspconfig").setup({
                 automatic_enable = {
                     exclude = {
-                        "rust_analyzer"
-                    }
-                }
+                        "rust_analyzer",
+                    },
+                },
             })
         end,
     },
