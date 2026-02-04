@@ -15,7 +15,12 @@ return {
         vim.g.rustaceanvim = {
             server = {
                 on_attach = function()
-                        vim.keymap.set('n', 'gI', vim.lsp.buf.implementation, { buffer = bufnr, desc = 'Go to implementation' })
+                    vim.keymap.set(
+                        "n",
+                        "gI",
+                        vim.lsp.buf.implementation,
+                        { buffer = bufnr, desc = "Go to implementation" }
+                    )
                 end,
                 settings = {
                     ["rust-analyzer"] = {
