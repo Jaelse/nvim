@@ -1,8 +1,19 @@
 return {
     {
         "mason-org/mason.nvim",
-        opts = {},
-        config = function()
+        dependencies = {
+            "artemave/workspace-diagnostics.nvim",
+        },
+        opts = {
+            servers = {
+                ts_ls = {
+                    on_attach = function(client, bufnr)
+                        require("workspace-diagnostics").populate_workspace_diagnostics(client, 0)
+                    end,
+                },
+            },
+        },
+        config = function(_, opts)
             require("mason").setup({
                 registries = {
                     "github:mason-org/mason-registry",
@@ -11,8 +22,12 @@ return {
             })
             vim.diagnostic.config({
                 virtual_text = true,
-                underline = true
+                underline = true,
             })
+            for server, config in pairs(opts.servers) do
+                vim.lsp.config(server, config)
+                vim.lsp.enable(server)
+            end
         end,
     },
     {
