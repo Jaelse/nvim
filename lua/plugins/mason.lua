@@ -66,7 +66,10 @@ return {
                     "eslint",
                     "bashls",
                     "gopls",
-                    "pylsp",
+                    "pyright",
+                    "mypy",
+                    "ruff",
+                    "black",
                 },
             })
         end,
