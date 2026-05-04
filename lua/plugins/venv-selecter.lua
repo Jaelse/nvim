@@ -8,8 +8,12 @@ return {
   keys = {
     { ",v", "<cmd>VenvSelect<cr>" },                                                                 -- Open picker on keymap
   },
-  opts = {                                                                                           -- this can be an empty lua table - just showing below for clarity.
-    search = {},                                                                                     -- if you add your own searches, they go here.
-    options = {},                                                                                    -- if you add plugin options, they go here.
-  },
+  config = function()
+    local orig_notify = vim.notify
+    require("venv-selector").setup({
+      search = {},
+      options = {},
+    })
+    vim.notify = orig_notify
+  end,
 }

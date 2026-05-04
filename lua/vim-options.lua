@@ -22,6 +22,7 @@ vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 vim.keymap.set("t", "<leader><Esc>", "<C-\\><C-n>", { noremap = true, silent = true, desc = "Exit Terminal Mode" })
 
+--Linux and Windows
 vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
 vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
 vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
@@ -32,4 +33,11 @@ vim.keymap.set("n", "<A-l>", "$", { desc = "Go to end of the line" })
 vim.keymap.set("n", "<leader><S-l>", "v$", { desc = "Go to end of the line" })
 
 vim.keymap.set("n", "<A-h>", "^", { desc = "Go to beginning of the line" })
+vim.keymap.set("n", "<leader><S-h>", "v^", { desc = "Go to beginning of the line" })
+
+-- MAC OS
+vim.keymap.set("n", "<D-l>", "$", { desc = "Go to end of the line" })
+vim.keymap.set("n", "<leader><S-l>", "v$", { desc = "Go to end of the line" })
+
+vim.keymap.set("n", "<D-h>", "^", { desc = "Go to beginning of the line" })
 vim.keymap.set("n", "<leader><S-h>", "v^", { desc = "Go to beginning of the line" })
