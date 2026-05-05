@@ -69,6 +69,7 @@ return {
                     "pyright",
                     "mypy",
                     "ruff",
+                    "isort",
                     "black",
                 },
             })
