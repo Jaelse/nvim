@@ -10,12 +10,10 @@ return {
             sources = {
                 null_ls.builtins.formatting.stylua,
                 null_ls.builtins.formatting.prettierd,
-                null_ls.builtins.formatting.black,
-                null_ls.builtins.formatting.isort,
+                require("none-ls.formatting.ruff_format"),
                 null_ls.builtins.completion.spell,
                 null_ls.builtins.diagnostics.eslint_d,
-                null_ls.builtins.diagnostics.mypy,
-                null_ls.builtins.diagnostics.ruff,
+                require("none-ls.diagnostics.ruff"),
                 -- require("none-ls.diagnostics.eslint_d"),
             },
             on_attach = function(client, bufnr)
@@ -25,7 +23,16 @@ return {
                         group = augroup,
                         buffer = bufnr,
                         callback = function()
-                            vim.lsp.buf.format({ bufnr = bufnr })
+                            local ft = vim.bo[bufnr].filetype
+                            vim.lsp.buf.format({
+                                bufnr = bufnr,
+                                filter = function(c)
+                                    if ft == "python" then
+                                        return c.name == "null-ls"
+                                    end
+                                    return true
+                                end,
+                            })
                         end,
                     })
                 end

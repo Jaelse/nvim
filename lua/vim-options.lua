@@ -6,6 +6,7 @@ vim.wo.number = true
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 vim.opt.winborder = "rounded"
+vim.opt.updatetime = 300
 vim.o.mouse = a
 
 vim.keymap.set("n", "<leader>gt", function()
@@ -18,6 +19,8 @@ vim.schedule(function()
 end)
 
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
+
+vim.keymap.set("n", "gri", vim.lsp.buf.definition, { desc = "Go to definition" })
 
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 vim.keymap.set("t", "<leader><Esc>", "<C-\\><C-n>", { noremap = true, silent = true, desc = "Exit Terminal Mode" })
