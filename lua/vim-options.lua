@@ -32,6 +32,16 @@ vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower win
 vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 vim.g.transparent_enabled = true
 
+-- Select text in visual mode, then use . to replace each occurrence, n to skip
+vim.keymap.set("v", "<leader>r", function()
+    vim.cmd('noau normal! "vy"')
+    local text = vim.fn.getreg('v')
+    local escaped = vim.fn.escape(text, '/\\'):gsub('\n', '\\n')
+    vim.fn.setreg('/', '\\V' .. escaped)
+    vim.opt.hlsearch = true
+    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<Esc>`<cgn', true, false, true), 'n', false)
+end, { desc = "Replace occurrences one by one" })
+
 vim.keymap.set("n", "<A-l>", "$", { desc = "Go to end of the line" })
 vim.keymap.set("n", "<leader><S-l>", "v$", { desc = "Go to end of the line" })
 
