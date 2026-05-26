@@ -21,6 +21,9 @@ return {
                         vim.lsp.buf.implementation,
                         { buffer = bufnr, desc = "Go to implementation" }
                     )
+                    vim.keymap.set("n", "<leader>fm", function()
+                        vim.lsp.buf.format({ bufnr = bufnr, name = "rust-analyzer" })
+                    end, { buffer = bufnr, desc = "Format with rust-analyzer" })
                     local timer = vim.uv.new_timer()
                     vim.api.nvim_create_autocmd({ "TextChanged", "InsertLeave" }, {
                         buffer = bufnr,
