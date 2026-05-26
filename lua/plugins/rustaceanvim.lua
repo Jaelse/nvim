@@ -21,12 +21,6 @@ return {
                         vim.lsp.buf.implementation,
                         { buffer = bufnr, desc = "Go to implementation" }
                     )
-                    vim.api.nvim_create_autocmd("BufWritePre", {
-                        buffer = bufnr,
-                        callback = function()
-                            vim.lsp.buf.format({ bufnr = bufnr, async = false })
-                        end,
-                    })
                     local timer = vim.uv.new_timer()
                     vim.api.nvim_create_autocmd({ "TextChanged", "InsertLeave" }, {
                         buffer = bufnr,
