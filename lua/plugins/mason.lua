@@ -68,6 +68,8 @@ return {
                     "ruff",
                     "isort",
                     "black",
+                    "docker_compose_language_service",
+                    "taplo",
                 },
             })
         end,
